@@ -25,6 +25,7 @@ from api.views import PersonMediaViewSet
 from api.views import PersonAuditViewSet
 from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
 
+
 router = routers.DefaultRouter()
 router.register(r'person', PersonViewSet)
 router.register(r'person-type', PersonTypeViewSet)
