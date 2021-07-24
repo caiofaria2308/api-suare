@@ -34,9 +34,10 @@ router.register(r'person-media', PersonMediaViewSet)
 router.register(r'person-audit', PersonAuditViewSet)
 
 urlpatterns = [
-    path('', include(router.urls)),
-    path('token/', TokenObtainPairView.as_view()),
-    path('token/refresh/', TokenRefreshView.as_view()),
+    #path('', include('app.urls', namespace="app")),
+    path('api/v1/', include(router.urls)),
+    path('auth/', TokenObtainPairView.as_view()),
+    path('auth/refresh/', TokenRefreshView.as_view()),
     path('admin/', admin.site.urls),
     path('api-auth/', include('rest_framework.urls', namespace='rest_framework')),
     path('docs/', include_docs_urls(title="API Suari"), name="api-docs")
