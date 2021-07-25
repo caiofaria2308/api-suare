@@ -1,5 +1,8 @@
 from person.models import Person, PersonMediaType, PersonMedia, PersonType, PersonAudit
-from .serializers import PersonAuditSerializer, PersonMediaSerializer, PersonMediaTypeSerializer, PersonMediaTypeSerializer, PersonSerializer, PersonTypeSerializer
+from django.contrib.auth.models import User
+from .serializers import PersonAuditSerializer, PersonMediaSerializer, PersonMediaTypeSerializer
+from .serializers import PersonMediaTypeSerializer, PersonSerializer
+from .serializers import PersonTypeSerializer, UserSerializer
 from rest_framework import viewsets
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.authentication import SessionAuthentication, BasicAuthentication
@@ -37,3 +40,10 @@ class PersonAuditViewSet(viewsets.ModelViewSet):
     permission_classes = [IsAuthenticated]
     queryset = PersonAudit.objects.all()
     serializer_class = PersonAuditSerializer
+
+
+class LoggedUserViewSet(viewsets.ModelViewSet):
+    authentication_classes = [SessionAuthentication, BasicAuthentication]
+    permission_classes = [IsAuthenticated]
+    queryset = User.objects.all()
+    serializer_class = UserSerializer

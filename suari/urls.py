@@ -23,6 +23,7 @@ from api.views import PersonTypeViewSet
 from api.views import PersonMediaTypeViewSet
 from api.views import PersonMediaViewSet
 from api.views import PersonAuditViewSet
+from api.views import LoggedUserViewSet
 from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 from django.conf.urls.static import static
@@ -35,6 +36,8 @@ router.register(r'person-type', PersonTypeViewSet)
 router.register(r'person-media-type', PersonMediaTypeViewSet)
 router.register(r'person-media', PersonMediaViewSet)
 router.register(r'person-audit', PersonAuditViewSet)
+router.register(r'users', LoggedUserViewSet)
+
 
 urlpatterns = [
     #path('', include('app.urls', namespace="app")),

@@ -1,4 +1,5 @@
 from person.models import Person, PersonMediaType, PersonMedia, PersonType, PersonAudit
+from django.contrib.auth.models import User
 from rest_framework import serializers
 
 
@@ -56,4 +57,13 @@ class PersonAuditSerializer(serializers.ModelSerializer):
             'cpf_new',
             'cpf_old',
             'last_update'
+        ]
+
+class UserSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = User
+        fields = [
+            'id',
+            'username',
+            'first_name'
         ]
