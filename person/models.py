@@ -15,7 +15,6 @@ class PersonMediaType(models.Model):
 
 
 class Person(models.Model):
-    id = models.BigIntegerField(primary_key=True)
     name = models.CharField(max_length=32, null=False)
     type = models.ForeignKey(PersonType, on_delete=CASCADE, null=False)
     cpf = CPFField('cpf', null=False, unique=True)
