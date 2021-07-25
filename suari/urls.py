@@ -24,6 +24,9 @@ from api.views import PersonMediaTypeViewSet
 from api.views import PersonMediaViewSet
 from api.views import PersonAuditViewSet
 from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
+from django.contrib.staticfiles.urls import staticfiles_urlpatterns
+from django.conf.urls.static import static
+from . import settings
 
 
 router = routers.DefaultRouter()
@@ -41,5 +44,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('api-auth/', include('rest_framework.urls', namespace='rest_framework')),
     path('docs/', include_docs_urls(title="API Suari"), name="api-docs")
-
 ]
+
+urlpatterns += staticfiles_urlpatterns()
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
